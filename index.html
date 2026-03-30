@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transtornos de Ansiedade e Estresse — Guia Completo</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0f13;
+    --surface: #16181f;
+    --surface2: #1e2029;
+    --border: rgba(255,255,255,0.07);
+    --accent: #7eb8a4;
+    --accent2: #c4a882;
+    --accent3: #a98ec4;
+    --text: #e8e6e1;
+    --text-muted: #8a8880;
+    --text-dim: #5a5855;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(14,15,19,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    height: 56px;
+    overflow-x: auto;
+  }
+
+  nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0 1rem;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  nav a:hover, nav a.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8rem 2rem 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 30% 40%, rgba(126,184,164,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 60% at 70% 60%, rgba(169,142,196,0.07) 0%, transparent 70%);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
+  }
+
+  .hero-content { position: relative; max-width: 800px; }
+
+  .hero-tag {
+    display: inline-block;
+    background: rgba(126,184,164,0.12);
+    border: 1px solid rgba(126,184,164,0.25);
+    color: var(--accent);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero p {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    max-width: 560px;
+    margin: 0 auto 3rem;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #0e0f13;
+    padding: 14px 32px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    transition: all 0.2s;
+  }
+
+  .btn-primary:hover { background: #9ecfbb; transform: translateY(-1px); }
+
+  .btn-ghost {
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 14px 32px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.2s;
+  }
+
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 5rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border);
+    animation: fadeUp 0.8s 0.4s ease both;
+    flex-wrap: wrap;
+  }
+
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    display: block;
+  }
+  .stat-label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* SECTIONS */
+  section {
+    padding: 6rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .section-intro {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    max-width: 640px;
+    margin-bottom: 3.5rem;
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 0 2rem;
+  }
+
+  /* DISORDERS GRID */
+  .disorders-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .disorder-card {
+    background: var(--surface);
+    padding: 2rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .disorder-card:hover { background: var(--surface2); }
+
+  .disorder-card.active { background: var(--surface2); }
+
+  .disorder-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    transition: color 0.2s;
+  }
+
+  .disorder-card:hover .disorder-num, .disorder-card.active .disorder-num {
+    color: var(--accent);
+  }
+
+  .disorder-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .disorder-tag {
+    display: inline-block;
+    background: rgba(126,184,164,0.1);
+    color: var(--accent);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: 1rem;
+  }
+
+  .disorder-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    display: none;
+  }
+
+  .disorder-card.active p { display: block; }
+
+  .disorder-details {
+    margin-top: 1rem;
+    display: none;
+    border-top: 1px solid var(--border);
+    padding-top: 1rem;
+  }
+
+  .disorder-card.active .disorder-details { display: block; }
+
+  .detail-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 13px;
+    color: var(--text-muted);
+    align-items: flex-start;
+  }
+
+  .detail-row strong { color: var(--text); min-width: 80px; flex-shrink: 0; }
+
+  .expand-hint {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .disorder-card.active .expand-hint { display: none; }
+
+  /* TREATMENTS */
+  .treatments-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  @media (max-width: 700px) {
+    .treatments-layout { grid-template-columns: 1fr; }
+    nav { gap: 0; }
+  }
+
+  .treatment-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2rem;
+  }
+
+  .treatment-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent2);
+  }
+
+  .treatment-block > p {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .treatment-item {
+    margin-bottom: 1.25rem;
+  }
+
+  .treatment-item h4 {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+    color: var(--text);
+  }
+
+  .treatment-item p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* MEDS TABLE */
+  .meds-grid {
+    display: grid;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .med-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    background: var(--surface);
+    transition: background 0.2s;
+  }
+
+  .med-row:hover { background: var(--surface2); }
+
+  .med-row.header {
+    background: rgba(126,184,164,0.08);
+  }
+
+  .med-cell {
+    padding: 1rem 1.25rem;
+    font-size: 13px;
+    border-right: 1px solid var(--border);
+  }
+
+  .med-cell:last-child { border-right: none; }
+
+  .med-row.header .med-cell {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  @media (max-width: 700px) {
+    .med-row { grid-template-columns: 1fr 1fr; }
+    .med-cell:nth-child(3), .med-cell:nth-child(4) { display: none; }
+    .med-row.header .med-cell:nth-child(3),
+    .med-row.header .med-cell:nth-child(4) { display: none; }
+  }
+
+  /* NODRUG */
+  .nodrug-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+
+  .nodrug-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.2s;
+  }
+
+  .nodrug-card:hover {
+    border-color: rgba(196,168,130,0.3);
+    transform: translateY(-2px);
+  }
+
+  .nodrug-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .nodrug-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent2);
+  }
+
+  .nodrug-card p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* SPECIAL GROUPS */
+  .groups-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+
+  .tab-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+
+  .tab-btn.active { color: var(--accent3); border-bottom-color: var(--accent3); }
+  .tab-btn:hover { color: var(--text); }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  .group-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  @media (max-width: 600px) { .group-content { grid-template-columns: 1fr; } }
+
+  .group-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.75rem;
+  }
+
+  .group-block h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--accent3);
+  }
+
+  .group-block ul {
+    list-style: none;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+
+  .group-block ul li {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--border);
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .group-block ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent3);
+    font-size: 12px;
+  }
+
+  .group-block ul li:last-child { border-bottom: none; }
+
+  /* SELF-ASSESSMENT */
+  .assessment-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2.5rem;
+  }
+
+  .assessment-intro {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .assessment-question {
+    margin-bottom: 1.5rem;
+  }
+
+  .assessment-question p {
+    font-size: 14px;
+    margin-bottom: 0.75rem;
+    color: var(--text);
+  }
+
+  .scale {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .scale-btn {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    transition: all 0.15s;
+  }
+
+  .scale-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .scale-btn.selected { background: var(--accent); color: #0e0f13; border-color: var(--accent); font-weight: 500; }
+
+  .scale-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 0.4rem;
+    letter-spacing: 0.05em;
+  }
+
+  .assess-btn {
+    background: var(--accent);
+    color: #0e0f13;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    transition: all 0.2s;
+  }
+
+  .assess-btn:hover { background: #9ecfbb; }
+
+  .result-box {
+    display: none;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid;
+  }
+
+  .result-box h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .result-box p { font-size: 14px; line-height: 1.6; }
+
+  .result-low { border-color: rgba(126,184,164,0.3); background: rgba(126,184,164,0.05); }
+  .result-low h4 { color: var(--accent); }
+
+  .result-med { border-color: rgba(196,168,130,0.3); background: rgba(196,168,130,0.05); }
+  .result-med h4 { color: var(--accent2); }
+
+  .result-high { border-color: rgba(169,142,196,0.3); background: rgba(169,142,196,0.05); }
+  .result-high h4 { color: var(--accent3); }
+
+  .disclaimer {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: 1rem;
+    font-style: italic;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 3rem 2rem;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 13px;
+  }
+
+  footer strong { color: var(--text-muted); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* PROGRESS BAR */
+  .progress-bar {
+    position: fixed;
+    top: 56px;
+    left: 0;
+    height: 2px;
+    background: var(--accent);
+    z-index: 99;
+    transition: width 0.1s;
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+
+<nav>
+  <a href="#inicio" class="active">Início</a>
+  <a href="#transtornos">Transtornos</a>
+  <a href="#tratamentos">Tratamentos</a>
+  <a href="#medicamentos">Medicamentos</a>
+  <a href="#sem-drogas">Sem Drogas</a>
+  <a href="#grupos">Grupos Especiais</a>
+  <a href="#autoavaliacao">Autoavaliação</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Guia baseado em evidências</div>
+    <h1>Transtornos de<br><em>Ansiedade</em> e Estresse</h1>
+    <p>Entenda as causas, reconheça os sintomas e conheça os tratamentos mais eficazes — sem jargão clínico excessivo.</p>
+    <div class="hero-cta">
+      <a href="#transtornos" class="btn-primary">Explorar o guia</a>
+      <a href="#autoavaliacao" class="btn-ghost">Autoavaliação</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num">9</span>
+        <span class="stat-label">Transtornos cobertos</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">11</span>
+        <span class="stat-label">Classes de medicamentos</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">70–90%</span>
+        <span class="stat-label">Taxa de melhora com tratamento</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">8</span>
+        <span class="stat-label">Abordagens sem medicação</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- TRANSTORNOS -->
+<section id="transtornos" class="fade-in">
+  <div class="section-label">Capítulo 01</div>
+  <h2>Os 9 Transtornos de Ansiedade</h2>
+  <p class="section-intro">Clique em cada transtorno para ver sintomas, causas e tratamentos recomendados.</p>
+
+  <div class="disorders-grid">
+
+    <div class="disorder-card" onclick="toggleDisorder(this)">
+      <div class="disorder-num">01</div>
+      <div class="disorder-tag">Muito comum</div>
+      <h3>Transtorno de Ansiedade Generalizada (TAG)</h3>
+      <p>Preocupação excessiva e difícil de controlar com múltiplos aspectos da vida — trabalho, saúde, família — por pelo menos 6 meses.</p>
+      <div class="disorder-details">
+        <div class="detail-row"><strong>Sintomas:</strong> Fadiga, irritabilidade, tensão muscular, dificuldade de concentração, insônia, sensação de "estar no limite".</div>
+        <div class="detail-row"><strong>Causas:</strong> Genética, experiências de vida estressantes, desequilíbrios em neurotransmissores (serotonina, norepinefrina).</div>
+        <div class="detail-row"><strong>Tratamento:</strong> TCC + SSRIs/SNRIs são a primeira linha. Buspirona como alternativa. Alta eficácia com tratamento combinado.</div>
+      </div>
+      <div class="expand-hint">↓ Clique para expandir</div>
+    </div>
+
+    <div class="disorder-card" onclick="toggleDisorder(this)">
+      <div class="disorder-num">02</div>
+      <div class="disorder-tag">Episódico</div>
+      <h3>Transtorno do Pânico</h3>
+      <p>Ataques súbitos e intensos de medo acompanhados de sintomas físicos intensos — sem causa aparente.</p>
+      <div class="disorder-details">
+        <div class="detail-row"><strong>Sintomas:</strong> Palpitações, falta de ar, tontura, dor no peito, sensação de morte iminente, formigamentos.</div>
+        <div class="detail-row"><strong>Causas:</strong> Hiperatividade da amígdala cerebral, predisposição genética, episódios de estresse intenso.</div>
+        <div class="detail-row"><strong>Tratamento:</strong> Combinação de TCC + antidepressivos resolve 70–90% dos casos. Técnicas de respiração como suporte imediato.</div>
+      </div>
+      <div class="expand-hint">↓ Clique para expandir</div>
+    </div>
+
+    <div class="disorder-card" onclick="toggleDisorder(this)">
+      <div class="disorder-num">03</div>
+      <div class="disorder-tag">Situacional</div>
+      <h3>Agorafobia</h3>
+      <p>Medo intenso de situações onde escapar seria difícil ou embaraçoso — transporte público, multidões, espaços abertos.</p>
+      <div class="disorder-details">
+        <div class="detail-row"><strong>Sintomas:</strong> Evitação de locais específicos, necessidade de companhia, ansiedade antecipatória, reclusão progressiva.</div>
+        <div class="detail-row"><strong>Causas:</strong> Frequentemente surge após ataques de pânico. Reforço negativo do comportamento de evitação.</div>
+        <div class="detail-row"><strong>Tratamento:</strong> Terapia de exposição gradual (in vivo) é altamente eficaz. SSRIs como suporte farmacológico.</div>
+      </div>
+      <div class="expand-hint">↓ Clique para expandir</div>
+    </div>
+
+    <div class="disorder-card" onclick="toggleDisorder(this)">
+      <div class="disorder-num">04</div>
+      <div class="disorder-tag">Social</div>
+      <h3>Transtorno de Ansiedade Social (TAS)</h3>
+      <p>Medo persistente de situações sociais por receio de avaliação negativa, humilhação ou embaraço.</p>
+      <div class="disorder-details">
+        <div class="detail-row"><strong>Sintomas:</strong> Rubor, sudorese, tremores em situações sociais. Evitação de apresentações, festas, interações com desconhecidos.</div>
+        <div class="detail-row"><strong>Causas:</strong> Combinação de timidez inata, experiências humilhantes, modelagem de comportamento ansioso pelos pais.</div>
+        <div class="detail-row"><strong>Tratamento:</strong> TCC com treino de habilidades sociais + exposição. SSRIs (especialmente paroxetina, sertralina). Beta-bloqueadores para situações pontuais.</div>
+      </div>
+      <div class="expand-hint">↓ Clique para expandir</div>
+    </div>
+
+    <div class="disorder-card" onclick="toggleDisorder(this)">
+      <div class="disorder-num">05</div>
+      <div class="disorder-tag">Específico</div>
+      <h3>Fobia Específica</h3>
+      <p>Medo intenso e irracional de objeto ou situação específica — alturas, sangue, animais, injeções, voar.</p>
+      <div class="disorder-details">
+        <div class="detail-row"><strong>Sintomas:</strong> Ansiedade imediata ao contato com o estímulo, evitação, reconhecimento de que o medo é excessivo mas incapacidade de controlá-lo.</div>
+        <div class="detail-row"><strong>Causas:</strong> Experiência traumática direta, aprendizado observacional, predisposição evolutiva (cobras, aranhas).</div>
+        <div class="detail-row"><strong>Tratamento:</strong> Terapia de exposição é extremamente eficaz (até 90% de melhora). Dessensibilização sistemática. Realidade virtual como recurso moderno.</div>
+      </div>
+      <div class="expand-hint">↓ Clique para expandir</div>
+    </div>
+
+    <div class="disorder-card" onclick="toggleDisorder(this)">
+      <div class="disorder-num">06</div>
+      <div class="disorder-tag">Trauma</div>
+      <h3>Transtorno de Estresse Pós-Traumático (TEPT)</h3>
+      <p>Resposta prolongada a evento traumático — acidente, violência, desastre — com revivência persistente.</p>
+      <div class="disorder-details">
+        <div class="detail-row"><strong>Sintomas:</strong> Flashbacks, pesadelos, hipervigilância, entorpecimento emocional, evitação de gatilhos, irritabilidade.</div>
+        <div class="detail-row"><strong>Causas:</strong> Trauma intenso + vulnerabilidade biológica. Alterações no eixo HPA (cortisol) e na amígdala.</div>
+        <div class="detail-row"><strong>Tratamento:</strong> EMDR, TCC focada em trauma, exposição prolongada. SSRIs (sertralina, paroxetina) aprovados pela FDA para TEPT.</div>
+      </div>
+      <div class="expand-hint">↓ Clique para expandir</div>
+    </div>
+
+    <div class="disorder-card" onclick="toggleDisorder(this)">
+      <div class="disorder-num">07</div>
+      <div class="disorder-tag">Recorrente</div>
+      <h3>Transtorno Obsessivo-Compulsivo (TOC)</h3>
+      <p>Pensamentos intrusivos indesejados (obsessões) que levam a comportamentos repetitivos (compulsões) para reduzir a ansiedade.</p>
+      <div class="disorder-details">
+        <div class="detail-row"><strong>Sintomas:</strong> Verificações repetitivas, limpeza excessiva, contagem, pensamentos perturbadores sobre dano a si ou outros, rituais mentais.</div>
+        <div class="detail-row"><strong>Causas:</strong> Disfunção no circuito corticoestriado-talâmico. Componente genético significativo. Infecções estreptocócicas em crianças (PANDAS).</div>
+        <div class="detail-row"><strong>Tratamento:</strong> Exposição com prevenção de resposta (EPR) é o padrão ouro. SSRIs em doses mais altas que para depressão. Clomipramina como alternativa.</div>
+      </div>
+      <div class="expand-hint">↓ Clique para expandir</div>
+    </div>
+
+    <div class="disorder-card" onclick="toggleDisorder(this)">
+      <div class="disorder-num">08</div>
+      <div class="disorder-tag">Agudo</div>
+      <h3>Transtorno de Estresse Agudo (TEA)</h3>
+      <p>Reação intensa a trauma nas primeiras 4 semanas — precursor potencial do TEPT se não tratado.</p>
+      <div class="disorder-details">
+        <div class="detail-row"><strong>Sintomas:</strong> Dissociação, entorpecimento, memórias intrusivas, evitação, hiperativação do sistema nervoso.</div>
+        <div class="detail-row"><strong>Causas:</strong> Exposição direta ou indireta a evento ameaçador à vida. Vulnerabilidade individual prévia.</div>
+        <div class="detail-row"><strong>Tratamento:</strong> Intervenção precoce com TCC focada em trauma reduz risco de cronificação. Psicoeducação e estabilização são prioridade.</div>
+      </div>
+      <div class="expand-hint">↓ Clique para expandir</div>
+    </div>
+
+    <div class="disorder-card" onclick="toggleDisorder(this)">
+      <div class="disorder-num">09</div>
+      <div class="disorder-tag">Situacional</div>
+      <h3>Transtorno de Ajustamento com Ansiedade</h3>
+      <p>Resposta emocional desproporcional a estressor identificável — divórcio, demissão, doença — que prejudica funcionamento.</p>
+      <div class="disorder-details">
+        <div class="detail-row"><strong>Sintomas:</strong> Ansiedade, preocupação, nervosismo em resposta clara a evento de vida. Dura menos de 6 meses após resolução do estressor.</div>
+        <div class="detail-row"><strong>Causas:</strong> Estressor externo identificável + resposta desadaptativa. Recursos de enfrentamento insuficientes.</div>
+        <div class="detail-row"><strong>Tratamento:</strong> Psicoterapia de curto prazo (solução de problemas, suporte). Medicação raramente necessária. Prognóstico excelente.</div>
+      </div>
+      <div class="expand-hint">↓ Clique para expandir</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TRATAMENTOS PSICOLÓGICOS -->
+<section id="tratamentos" class="fade-in">
+  <div class="section-label">Capítulo 02</div>
+  <h2>Tratamentos Psicológicos</h2>
+  <p class="section-intro">As abordagens com maior evidência científica para transtornos de ansiedade.</p>
+
+  <div class="treatments-layout">
+    <div class="treatment-block">
+      <h3>Terapia Cognitivo-Comportamental (TCC)</h3>
+      <p>Primeira linha para quase todos os transtornos de ansiedade. Eficácia comparável ou superior aos medicamentos em longo prazo.</p>
+
+      <div class="treatment-item">
+        <h4>Reestruturação Cognitiva</h4>
+        <p>Identifica pensamentos automáticos negativos e os substitui por interpretações mais realistas. "Estou tendo um ataque cardíaco" → "Estou tendo uma crise de ansiedade, que não é fatal."</p>
+      </div>
+      <div class="treatment-item">
+        <h4>Exposição Gradual</h4>
+        <p>Confrontação sistemática e progressiva com situações temidas, sem comportamentos de segurança. A ansiedade sobe, atinge o pico e naturalmente cai — ensinando ao cérebro que o perigo é superestimado.</p>
+      </div>
+      <div class="treatment-item">
+        <h4>Duração típica</h4>
+        <p>12 a 20 sessões semanais para maioria dos casos. TCC de curta duração (6–8 sessões) também demonstra eficácia para fobias específicas.</p>
+      </div>
+    </div>
+
+    <div class="treatment-block">
+      <h3>Outras Psicoterapias</h3>
+      <p>Abordagens especializadas para condições específicas ou como complemento à TCC.</p>
+
+      <div class="treatment-item">
+        <h4>EMDR (Dessensibilização e Reprocessamento)</h4>
+        <p>Especialmente eficaz para TEPT. Usa movimentos oculares guiados para reprocessar memórias traumáticas. Reconhecido pela OMS como tratamento de primeira linha para trauma.</p>
+      </div>
+      <div class="treatment-item">
+        <h4>Terapia de Aceitação e Compromisso (ACT)</h4>
+        <p>Foca na aceitação das experiências internas em vez de controlar a ansiedade. Desenvolve flexibilidade psicológica e compromisso com ações alinhadas a valores.</p>
+      </div>
+      <div class="treatment-item">
+        <h4>Terapia Dialético-Comportamental (DBT)</h4>
+        <p>Regulação emocional, tolerância ao mal-estar, mindfulness e habilidades interpessoais. Útil quando ansiedade coexiste com desregulação emocional intensa.</p>
+      </div>
+      <div class="treatment-item">
+        <h4>Psicoterapia de Suporte</h4>
+        <p>Para estresse agudo e transtorno de ajustamento: escuta ativa, validação emocional e solução de problemas práticos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- MEDICAMENTOS -->
+<section id="medicamentos" class="fade-in">
+  <div class="section-label">Capítulo 03</div>
+  <h2>Classes de Medicamentos</h2>
+  <p class="section-intro">11 classes farmacológicas usadas no tratamento de ansiedade — como funcionam, para quê servem e o que esperar.</p>
+
+  <div class="meds-grid">
+    <div class="med-row header">
+      <div class="med-cell">Classe</div>
+      <div class="med-cell">Exemplos</div>
+      <div class="med-cell">Indicações principais</div>
+      <div class="med-cell">Observações</div>
+    </div>
+
+    <div class="med-row">
+      <div class="med-cell"><strong>SSRIs</strong><br><small style="color:var(--text-dim)">Inibidores seletivos da recaptação de serotonina</small></div>
+      <div class="med-cell">Sertralina, Escitalopram, Paroxetina, Fluoxetina</div>
+      <div class="med-cell">TAG, Pânico, TAS, TEPT, TOC — primeira linha para maioria</div>
+      <div class="med-cell">Início: 2–4 semanas. Bem tolerados. Podem aumentar ansiedade nas primeiras semanas.</div>
+    </div>
+
+    <div class="med-row">
+      <div class="med-cell"><strong>SNRIs</strong><br><small style="color:var(--text-dim)">Inibidores de serotonina e norepinefrina</small></div>
+      <div class="med-cell">Venlafaxina, Duloxetina</div>
+      <div class="med-cell">TAG, Pânico, TAS, TEPT</div>
+      <div class="med-cell">Alternativa eficaz aos SSRIs. Venlafaxina tem boa evidência para TAG.</div>
+    </div>
+
+    <div class="med-row">
+      <div class="med-cell"><strong>Benzodiazepínicos</strong><br><small style="color:var(--text-dim)">Potenciadores do GABA</small></div>
+      <div class="med-cell">Alprazolam, Clonazepam, Diazepam, Lorazepam</div>
+      <div class="med-cell">Alívio agudo de ansiedade intensa, insônia, ataques de pânico</div>
+      <div class="med-cell">Ação rápida mas risco de dependência. Uso idealmente de curto prazo. Não primeira linha.</div>
+    </div>
+
+    <div class="med-row">
+      <div class="med-cell"><strong>Buspirona</strong><br><small style="color:var(--text-dim)">Agonista parcial 5-HT1A</small></div>
+      <div class="med-cell">Buspirona</div>
+      <div class="med-cell">TAG (especialmente quando benzodiazepínicos devem ser evitados)</div>
+      <div class="med-cell">Sem dependência ou sedação. Onset de 2–4 semanas. Menos eficaz para pânico.</div>
+    </div>
+
+    <div class="med-row">
+      <div class="med-cell"><strong>Beta-bloqueadores</strong><br><small style="color:var(--text-dim)">Bloqueadores adrenérgicos β</small></div>
+      <div class="med-cell">Propranolol, Atenolol</div>
+      <div class="med-cell">Ansiedade de desempenho, sintomas físicos de TAS (tremores, palpitações)</div>
+      <div class="med-cell">Uso situacional (antes de apresentações). Não tratam a ansiedade cognitiva.</div>
+    </div>
+
+    <div class="med-row">
+      <div class="med-cell"><strong>Antidepressivos Tricíclicos</strong><br><small style="color:var(--text-dim)">TCAs</small></div>
+      <div class="med-cell">Imipramina, Clomipramina, Amitriptilina</div>
+      <div class="med-cell">TOC (clomipramina), Pânico, TAG — segunda ou terceira linha</div>
+      <div class="med-cell">Eficazes mas com mais efeitos colaterais que SSRIs. Perigosos em overdose.</div>
+    </div>
+
+    <div class="med-row">
+      <div class="med-cell"><strong>MAOIs</strong><br><small style="color:var(--text-dim)">Inibidores da monoaminoxidase</small></div>
+      <div class="med-cell">Fenelzina, Tranilcipromina</div>
+      <div class="med-cell">TAS resistente, Pânico refratário</div>
+      <div class="med-cell">Muito eficazes mas requerem dieta restrita (tiramina). Reservados para casos refratários.</div>
+    </div>
+
+    <div class="med-row">
+      <div class="med-cell"><strong>Pregabalina / Gabapentina</strong><br><small style="color:var(--text-dim)">Ligantes α2δ</small></div>
+      <div class="med-cell">Pregabalina, Gabapentina</div>
+      <div class="med-cell">TAG, ansiedade com dor crônica ou fibromialgia</div>
+      <div class="med-cell">Pregabalina aprovada na Europa para TAG. Ação relativamente rápida (1–2 semanas).</div>
+    </div>
+
+    <div class="med-row">
+      <div class="med-cell"><strong>Hidroxizina</strong><br><small style="color:var(--text-dim)">Anti-histamínico ansiolítico</small></div>
+      <div class="med-cell">Hidroxizina</div>
+      <div class="med-cell">TAG, ansiedade aguda sem risco de dependência</div>
+      <div class="med-cell">Boa opção quando benzodiazepínicos são contraindicados. Causa sedação.</div>
+    </div>
+
+    <div class="med-row">
+      <div class="med-cell"><strong>Mirtazapina</strong><br><small style="color:var(--text-dim)">Antidepressivo noradrenérgico</small></div>
+      <div class="med-cell">Mirtazapina</div>
+      <div class="med-cell">Ansiedade com insônia ou perda de peso, TEPT</div>
+      <div class="med-cell">Onset rápido para sono. Ganho de peso e sedação são efeitos comuns.</div>
+    </div>
+
+    <div class="med-row">
+      <div class="med-cell"><strong>Antipsicóticos atípicos</strong><br><small style="color:var(--text-dim)">Augmentação</small></div>
+      <div class="med-cell">Quetiapina, Risperidona, Aripiprazol</div>
+      <div class="med-cell">Ansiedade refratária como augmentação de antidepressivos</div>
+      <div class="med-cell">Não são primeira linha. Usados quando tratamentos convencionais falharam.</div>
+    </div>
+
+  </div>
+
+  <p style="font-size:12px;color:var(--text-dim);margin-top:1.5rem;font-style:italic;">⚠️ Esta tabela é educativa. Qualquer decisão sobre medicação deve ser feita com médico psiquiatra.</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- SEM DROGAS -->
+<section id="sem-drogas" class="fade-in">
+  <div class="section-label">Capítulo 04</div>
+  <h2>Abordagens Sem Medicação</h2>
+  <p class="section-intro">Técnicas complementares com evidência crescente — eficazes isoladas em casos leves, potentes como suporte em casos moderados a graves.</p>
+
+  <div class="nodrug-grid">
+
+    <div class="nodrug-card">
+      <span class="nodrug-icon">🧘</span>
+      <h4>Meditação Mindfulness</h4>
+      <p>Treina a atenção no momento presente sem julgamento. Reduz ruminação e hipervigilância. MBSR (Mindfulness-Based Stress Reduction) tem sólida base de evidências para TAG e ansiedade geral.</p>
+    </div>
+
+    <div class="nodrug-card">
+      <span class="nodrug-icon">🫁</span>
+      <h4>Técnicas de Respiração</h4>
+      <p>Respiração diafragmática e respiração 4-7-8 ativam o sistema nervoso parassimpático. Ferramenta de primeiros socorros para ataques de pânico e ansiedade aguda. Pode ser aprendida em minutos.</p>
+    </div>
+
+    <div class="nodrug-card">
+      <span class="nodrug-icon">🧬</span>
+      <h4>Biofeedback</h4>
+      <p>Monitora em tempo real sinais fisiológicos (frequência cardíaca, temperatura, tensão muscular) e treina o controle voluntário deles. Eficaz para TAG, dores de cabeça tensionais e transtorno do pânico.</p>
+    </div>
+
+    <div class="nodrug-card">
+      <span class="nodrug-icon">🏃</span>
+      <h4>Exercício Físico</h4>
+      <p>30 minutos de atividade aeróbica moderada 3–5x por semana reduz ansiedade comparável a medicação em alguns estudos. Aumenta BDNF, serotonina e endorfinas. Efeito ansiolítico de longa duração.</p>
+    </div>
+
+    <div class="nodrug-card">
+      <span class="nodrug-icon">🧘‍♀️</span>
+      <h4>Yoga</h4>
+      <p>Combina movimento, respiração e atenção plena. Reduz cortisol e marcadores inflamatórios. Especialmente útil para TEPT e ansiedade com componente somático forte.</p>
+    </div>
+
+    <div class="nodrug-card">
+      <span class="nodrug-icon">💊</span>
+      <h4>Probióticos</h4>
+      <p>O eixo intestino-cérebro influencia o humor e a ansiedade via nervo vago e produção de serotonina. Cepas como Lactobacillus rhamnosus mostram redução de comportamentos ansiosos. Área de pesquisa em expansão.</p>
+    </div>
+
+    <div class="nodrug-card">
+      <span class="nodrug-icon">🌿</span>
+      <h4>Aromaterapia</h4>
+      <p>Lavanda (linalool) tem efeito ansiolítico documentado — ativa receptores GABA de forma semelhante a benzodiazepínicos mas sem dependência. Silexan (extrato de lavanda oral) aprovado na Alemanha para ansiedade.</p>
+    </div>
+
+    <div class="nodrug-card">
+      <span class="nodrug-icon">🌀</span>
+      <h4>Hipnose Clínica</h4>
+      <p>Estado de foco atencional elevado que aumenta a receptividade a sugestões terapêuticas. Evidências para fobias, ansiedade pré-procedimento e dor crônica. Deve ser conduzida por profissional treinado.</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- GRUPOS ESPECIAIS -->
+<section id="grupos" class="fade-in">
+  <div class="section-label">Capítulo 05</div>
+  <h2>Grupos Especiais</h2>
+  <p class="section-intro">Ansiedade se manifesta de formas distintas em crianças e idosos — com causas, diagnósticos e tratamentos específicos.</p>
+
+  <div class="groups-tabs">
+    <button class="tab-btn active" onclick="switchTab('criancas')">Crianças e Adolescentes</button>
+    <button class="tab-btn" onclick="switchTab('idosos')">Idosos</button>
+  </div>
+
+  <div class="tab-content active" id="tab-criancas">
+    <div class="group-content">
+      <div class="group-block">
+        <h4>Apresentações Comuns</h4>
+        <ul>
+          <li>Ansiedade de separação (medo intenso de se afastar dos pais)</li>
+          <li>Recusa escolar / fobia escolar</li>
+          <li>Tiques motores e vocais (podem co-ocorrer com TOC)</li>
+          <li>Mutismo seletivo (falam em casa, silêncio em contextos sociais)</li>
+          <li>TAG com foco excessivo em desempenho escolar</li>
+          <li>Fobias específicas (escuro, monstros, cachorros)</li>
+        </ul>
+      </div>
+      <div class="group-block">
+        <h4>Abordagem Terapêutica</h4>
+        <ul>
+          <li>TCC adaptada à idade é a intervenção de primeira escolha</li>
+          <li>Envolvimento ativo dos pais no tratamento (terapia familiar)</li>
+          <li>SSRIs podem ser usados — sertralina e fluoxetina têm aprovação FDA para crianças</li>
+          <li>Evitar reforço parental do comportamento de evitação</li>
+          <li>Retorno gradual e estruturado à escola com suporte</li>
+          <li>Técnicas de relaxamento e psicoeducação adaptadas</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-content" id="tab-idosos">
+    <div class="group-content">
+      <div class="group-block">
+        <h4>Apresentações Comuns</h4>
+        <ul>
+          <li>Agorafobia (maior causa: medo de cair ou não conseguir escapar)</li>
+          <li>Ansiedade sobre saúde (hipocondria) e doenças crônicas</li>
+          <li>TAG frequentemente subdiagnosticada — confundida com "preocupação normal"</li>
+          <li>TEPT tardio (traumas antigos que reemergem na velhice)</li>
+          <li>Ansiedade secundária a condições médicas (tireoidopatias, doenças cardiovasculares)</li>
+          <li>Ansiedade induzida por medicamentos (descongestionantes, corticoides, cafeína)</li>
+        </ul>
+      </div>
+      <div class="group-block">
+        <h4>Considerações de Tratamento</h4>
+        <ul>
+          <li>Condições médicas devem ser descartadas antes do diagnóstico psiquiátrico</li>
+          <li>Revisão de medicamentos em uso (polifarmácia é fator de risco)</li>
+          <li>SSRIs são preferidos — benzodiazepínicos aumentam risco de quedas e cognição</li>
+          <li>TCC adaptada ao ritmo e capacidade cognitiva do paciente</li>
+          <li>Exercício físico tem impacto particularmente positivo nessa faixa etária</li>
+          <li>Suporte social e prevenção de isolamento são componentes essenciais</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- AUTOAVALIAÇÃO -->
+<section id="autoavaliacao" class="fade-in">
+  <div class="section-label">Capítulo 06</div>
+  <h2>Autoavaliação de Ansiedade</h2>
+  <p class="section-intro">Nas últimas 2 semanas, com que frequência você foi incomodado pelos seguintes problemas? (Baseado no GAD-7)</p>
+
+  <div class="assessment-box">
+    <p class="assessment-intro">Use a escala de 0 a 3: 0 = Nunca &nbsp;|&nbsp; 1 = Alguns dias &nbsp;|&nbsp; 2 = Mais da metade dos dias &nbsp;|&nbsp; 3 = Quase todos os dias</p>
+
+    <div class="assessment-question">
+      <p>1. Sentiu-se nervoso(a), ansioso(a) ou no limite?</p>
+      <div class="scale" id="q1">
+        <button class="scale-btn" onclick="select(this,'q1',0)">0</button>
+        <button class="scale-btn" onclick="select(this,'q1',1)">1</button>
+        <button class="scale-btn" onclick="select(this,'q1',2)">2</button>
+        <button class="scale-btn" onclick="select(this,'q1',3)">3</button>
+      </div>
+      <div class="scale-labels"><span>Nunca</span><span>Quase sempre</span></div>
+    </div>
+
+    <div class="assessment-question">
+      <p>2. Não conseguiu parar ou controlar as preocupações?</p>
+      <div class="scale" id="q2">
+        <button class="scale-btn" onclick="select(this,'q2',0)">0</button>
+        <button class="scale-btn" onclick="select(this,'q2',1)">1</button>
+        <button class="scale-btn" onclick="select(this,'q2',2)">2</button>
+        <button class="scale-btn" onclick="select(this,'q2',3)">3</button>
+      </div>
+      <div class="scale-labels"><span>Nunca</span><span>Quase sempre</span></div>
+    </div>
+
+    <div class="assessment-question">
+      <p>3. Preocupou-se demais com diversas coisas?</p>
+      <div class="scale" id="q3">
+        <button class="scale-btn" onclick="select(this,'q3',0)">0</button>
+        <button class="scale-btn" onclick="select(this,'q3',1)">1</button>
+        <button class="scale-btn" onclick="select(this,'q3',2)">2</button>
+        <button class="scale-btn" onclick="select(this,'q3',3)">3</button>
+      </div>
+      <div class="scale-labels"><span>Nunca</span><span>Quase sempre</span></div>
+    </div>
+
+    <div class="assessment-question">
+      <p>4. Teve dificuldade para relaxar?</p>
+      <div class="scale" id="q4">
+        <button class="scale-btn" onclick="select(this,'q4',0)">0</button>
+        <button class="scale-btn" onclick="select(this,'q4',1)">1</button>
+        <button class="scale-btn" onclick="select(this,'q4',2)">2</button>
+        <button class="scale-btn" onclick="select(this,'q4',3)">3</button>
+      </div>
+      <div class="scale-labels"><span>Nunca</span><span>Quase sempre</span></div>
+    </div>
+
+    <div class="assessment-question">
+      <p>5. Ficou tão agitado(a) que era difícil ficar parado(a)?</p>
+      <div class="scale" id="q5">
+        <button class="scale-btn" onclick="select(this,'q5',0)">0</button>
+        <button class="scale-btn" onclick="select(this,'q5',1)">1</button>
+        <button class="scale-btn" onclick="select(this,'q5',2)">2</button>
+        <button class="scale-btn" onclick="select(this,'q5',3)">3</button>
+      </div>
+      <div class="scale-labels"><span>Nunca</span><span>Quase sempre</span></div>
+    </div>
+
+    <div class="assessment-question">
+      <p>6. Ficou facilmente irritado(a) ou irritável?</p>
+      <div class="scale" id="q6">
+        <button class="scale-btn" onclick="select(this,'q6',0)">0</button>
+        <button class="scale-btn" onclick="select(this,'q6',1)">1</button>
+        <button class="scale-btn" onclick="select(this,'q6',2)">2</button>
+        <button class="scale-btn" onclick="select(this,'q6',3)">3</button>
+      </div>
+      <div class="scale-labels"><span>Nunca</span><span>Quase sempre</span></div>
+    </div>
+
+    <div class="assessment-question">
+      <p>7. Teve medo de que algo terrível pudesse acontecer?</p>
+      <div class="scale" id="q7">
+        <button class="scale-btn" onclick="select(this,'q7',0)">0</button>
+        <button class="scale-btn" onclick="select(this,'q7',1)">1</button>
+        <button class="scale-btn" onclick="select(this,'q7',2)">2</button>
+        <button class="scale-btn" onclick="select(this,'q7',3)">3</button>
+      </div>
+      <div class="scale-labels"><span>Nunca</span><span>Quase sempre</span></div>
+    </div>
+
+    <button class="assess-btn" onclick="calcScore()">Ver meu resultado</button>
+
+    <div class="result-box result-low" id="result-low">
+      <h4>Ansiedade Mínima (0–4 pontos)</h4>
+      <p>Seu nível de ansiedade está dentro da faixa normal. Continue monitorando e mantendo hábitos saudáveis de sono, exercício e gestão de estresse.</p>
+      <p class="disclaimer">Este questionário é uma ferramenta de triagem, não um diagnóstico. Se sentir que algo não está bem, converse com um profissional de saúde.</p>
+    </div>
+
+    <div class="result-box result-med" id="result-med">
+      <h4>Ansiedade Leve a Moderada (5–9 pontos)</h4>
+      <p>Seus sintomas merecem atenção. Técnicas de autogerenciamento (respiração, exercício, mindfulness) podem ajudar. Considere conversar com um médico ou psicólogo para avaliação.</p>
+      <p class="disclaimer">Este questionário é uma ferramenta de triagem, não um diagnóstico. Não substitui avaliação profissional.</p>
+    </div>
+
+    <div class="result-box result-high" id="result-high">
+      <h4>Ansiedade Moderada a Grave (10–21 pontos)</h4>
+      <p>Seu nível de ansiedade é significativo e pode estar impactando sua qualidade de vida. É importante buscar avaliação com um psiquiatra ou psicólogo. Tratamento eficaz está disponível.</p>
+      <p class="disclaimer">Este questionário é uma ferramenta de triagem baseada no GAD-7. Não é diagnóstico. Procure um profissional de saúde mental para avaliação adequada.</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p style="margin-bottom:0.5rem;"><strong>Guia Educativo sobre Ansiedade e Estresse</strong></p>
+  <p>Baseado em evidências clínicas e diretrizes internacionais (DSM-5, OMS, NICE). Este material é informativo e não substitui avaliação ou tratamento profissional.</p>
+  <p style="margin-top:0.75rem;">Em caso de crise de saúde mental, ligue para o <strong>CVV: 188</strong> (24h, gratuito)</p>
+</footer>
+
+<script>
+  // Scroll progress
+  window.addEventListener('scroll', () => {
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = (window.scrollY / total) * 100;
+    document.getElementById('progress').style.width = progress + '%';
+  });
+
+  // Fade in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Nav active state
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navLinks = document.querySelectorAll('nav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+    navLinks.forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+    });
+  });
+
+  // Disorders toggle
+  function toggleDisorder(card) {
+    const isActive = card.classList.contains('active');
+    document.querySelectorAll('.disorder-card').forEach(c => c.classList.remove('active'));
+    if (!isActive) card.classList.add('active');
+  }
+
+  // Tab switch
+  function switchTab(tab) {
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + tab).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  // Assessment
+  const scores = {};
+  function select(btn, q, val) {
+    document.querySelectorAll('#' + q + ' .scale-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    scores[q] = val;
+  }
+
+  function calcScore() {
+    const total = Object.values(scores).reduce((a, b) => a + b, 0);
+    const answered = Object.keys(scores).length;
+    if (answered < 7) { alert('Por favor, responda todas as 7 perguntas.'); return; }
+
+    document.getElementById('result-low').style.display = 'none';
+    document.getElementById('result-med').style.display = 'none';
+    document.getElementById('result-high').style.display = 'none';
+
+    let id = total <= 4 ? 'result-low' : total <= 9 ? 'result-med' : 'result-high';
+    const el = document.getElementById(id);
+    el.style.display = 'block';
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+</script>
+</body>
+</html>
